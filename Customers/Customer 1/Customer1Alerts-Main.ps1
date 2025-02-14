@@ -1,6 +1,6 @@
 param (
     [string]$CustomerName = "Customer1Alert-Par",  # Change this to get different customer parameters  
-    [string]$ParameterBaseDir = "https://github.com/moki-zz/GitHubDesktop/blob/main/Customers/Customer%201/Customer1Alert-Par.json"
+    [string]$ParameterBaseDir = "https://github.com/moki-zz/GitHubDesktop/blob/main/Customers/Customer%201/"
 )
 
 # Construct parameter file path dynamically
