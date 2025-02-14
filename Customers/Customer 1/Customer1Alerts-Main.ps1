@@ -1,6 +1,6 @@
 param (
-    [string]$CustomerName = "Customer1Alert-Par",  # Change this to get different customer parameters  
-    [string]$ParameterBaseDir = "https://github.com/moki-zz/GitHubDesktop/blob/main/Customers/Customer%201/"
+    [string]$CustomerName = "Customer1Alert-Par",  
+    [string]$ParameterBaseDir = "$PSScriptRoot/"
 )
 
 # Construct parameter file path dynamically
@@ -20,8 +20,7 @@ Set-AzContext -SubscriptionId $Parameters.subscriptionId
 
 # Define Alert Rule Category Scripts
 $AlertCategories = @(
-    "https://github.com/moki-zz/GitHubDesktop/blob/main/Alert%20Rule%20Categories/VMAlerts/VMAlerts-Main.ps1"
-    # Add other category scripts here
+    "$PSScriptRoot/../../Alert Rule Categories/VMAlerts/VMAlerts-Main.ps1"
 )
 
 # Execute Each Alert Rule Category Script
