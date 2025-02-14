@@ -16,7 +16,7 @@ Set-AzContext -SubscriptionId $Parameters.subscriptionId
 
 # Define Individual Alert Scripts
 $ScriptPaths = @(
-    "C:\AZM-GitHub\Alert Rule Categories\VMAlerts\VMAlertsSingle\Disk-Data Disk IOPS Consumed Percentage.ps1"
+    "https://github.com/moki-zz/GitHubDesktop/blob/main/Alert%20Rule%20Categories/VMAlerts/VMAlertsSingle/Disk-Data%20Disk%20IOPS%20Consumed%20Percentage.ps1"
 )
 
 # Loop through scripts and execute
