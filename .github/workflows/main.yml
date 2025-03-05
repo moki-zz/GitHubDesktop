@@ -1,37 +1,39 @@
 name: Deploy Azure Alert Rules
 
 on:
-  workflow_dispatch:
-    inputs:
-      customer:
-        description: 'Select a Customer for Alert Deployment'
-        required: true
-        default: 'Customer 1'
-        type: choice
-        options:
-          - Customer 1
-          - Customer 2
+  workflow_dispatch:  # Manual trigger
 
 jobs:
   deploy-alerts:
-    runs-on: windows-latest  # Windows runner (pre-installed PowerShell)
+    runs-on: windows-latest  # Use Windows runner to support PowerShell scripts
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Install Azure PowerShell Module
+        run: |
+          Install-Module -Name Az -Force -Scope CurrentUser -AllowClobber
+          Import-Module Az
+        shell: pwsh
+
       - name: Check Installed PowerShell Modules
         run: |
-          Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az" }
+          Get-Module -ListAvailable Az*
         shell: pwsh
 
       - name: Authenticate to Azure
         run: |
           Connect-AzAccount -Identity
         shell: pwsh
-        env:
-          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Execute Customer-Specific Alert Deployment
         run: |
           pwsh -File ./GitHubLab/Customers/${{ github.event.inputs.customer }}/Cus${{ github.event.inputs.customer }}-Alerts-Main.ps1
+        shell: pwsh
+
+      - name: Post Checkout Repository
+        run: echo "Repository checkout completed."
+
+      - name: Complete job
+        run: echo "Azure alert deployment workflow finished."
