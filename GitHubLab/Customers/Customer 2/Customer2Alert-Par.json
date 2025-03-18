@@ -1,7 +1,0 @@
-{
-    "subscriptionId": "f568eda3-fb90-4ae1-bca7-a53136f06ba4",
-    "ClNm" : "Customer2",
-    "resourceGroupName" : "AZM-Snow",
-    "actionGroupId" : "/subscriptions/f568eda3-fb90-4ae1-bca7-a53136f06ba4/resourceGroups/AZM-SNow/providers/microsoft.insights/actionGroups/AZM-Snow-Main",
-    "Location" : "East US"
-}
